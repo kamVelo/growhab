@@ -9,7 +9,7 @@ def home():
 
 @app.route('/', methods=["POST"])
 def decision():
-    file = open("templates/decision.html", "w")
+    file = open("./templates/decision.html", "w")
     try:
         if request.form["LEDon"]: file.write("HIGH")
     except KeyError:
