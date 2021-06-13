@@ -9,13 +9,18 @@ def home():
 
 @app.route('/', methods=["POST"])
 def decision():
-    session["on"] = "LOW"
+    file = open("decision.txt", "w")
     try:
-        if request.form["LEDon"]: session["on"] = "HIGH"
+        if request.form["LEDon"]: file.write("HIGH")
     except KeyError:
-        pass
+        file.write("LOW")
+    file.close()
     return redirect('/')
 
 @app.route('/decision', methods=["GET"])
 def returnDecision():
-    return session["on"]
+    file = open("decision.txt", "r")
+    var = file.readline()
+    file.close()
+    print(var)
+    return var
