@@ -9,7 +9,7 @@ def home():
 
 @app.route('/', methods=["POST"])
 def decision():
-    file = open("./templates/decision.html", "w")
+    file = open("./static/text/decision.txt", "w")
     try:
         if request.form["LEDon"]: file.write("HIGH")
     except KeyError:
@@ -19,4 +19,7 @@ def decision():
 
 @app.route('/decision', methods=["GET"])
 def returnDecision():
-    return render_template('decision.html')
+    file = open ("./static/text/decision.txt", "r")
+    var = file.readlines()[0]
+    file.close()
+    return var
