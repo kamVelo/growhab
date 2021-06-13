@@ -9,9 +9,9 @@ def home():
 
 @app.route('/', methods=["POST"])
 def decision():
-    session["on"] = False
+    session["on"] = "LOW"
     try:
-        if request.form["LEDon"]: session["on"] = True
+        if request.form["LEDon"]: session["on"] = "HIGH"
     except KeyError:
         pass
     return redirect('/')
