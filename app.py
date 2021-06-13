@@ -18,5 +18,7 @@ def decision():
 
 @app.route('/decision', methods=["GET"])
 def returnDecision():
-    print(session["on"])
+    file = open("log.txt", "a")
+    file.write(str(session['on']))
+    file.close()
     return redirect('/')
