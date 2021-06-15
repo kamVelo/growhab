@@ -9,7 +9,7 @@ def home():
 
 @app.route('/', methods=["POST"])
 def decision():
-    conn = sql.connect("./static/test.db", isolation_level=None)
+    conn = sql.connect("./static/databases/test.db", isolation_level=None)
     cursor = conn.cursor()
     var = cursor.execute("SELECT * FROM LEDON").fetchall()[0][0]
     
@@ -23,7 +23,7 @@ def decision():
 
 @app.route('/decision', methods=["GET"])
 def returnDecision():
-    conn = sql.connect("test.db", isolation_level=None)
+    conn = sql.connect("./static/databases/test.db", isolation_level=None)
     cursor = conn.cursor()
     var = cursor.execute("SELECT * FROM LEDON").fetchall()[0][0]
     print(var)
