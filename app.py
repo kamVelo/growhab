@@ -1,7 +1,8 @@
 from flask import Flask,render_template, session,request, redirect
 import sqlite3 as sql
+from keys import Keys
 app = Flask(__name__)
-app.secret_key = "dsdnkdso£*4492r4_2398u"
+app.secret_key = Keys.get("secretKey")
 
 @app.route('/', methods=['GET'])
 def home():
